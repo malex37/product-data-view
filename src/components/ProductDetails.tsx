@@ -4,19 +4,15 @@ const ProductDetails = (
   { product }: { product: Product }
 ) => {
   return (
-    <div className="flex flex-col">
-      <div>
-        <div>
-          <img src={product.imageURI} />
+    <div className="flex flex-col w-[20%]">
+      <div className="w-full flex flex-col gap-3">
+        <div className="flex flex-col items-center ">
+          <img src={product.imageURI} className="max-w-[75%]"/>
+          <p className="text-center font-bold text-2xl">{product.title}</p>
+          <p className="text-center text-lg text-gray-500">{product.subtitle}</p>
         </div>
-        <div>
-          <p>{product.title}</p>
-        </div>
-        <div>{product.subtitle}</div>
-      </div>
-      <div>
-        <TagGroup tags={product.tags} />
-      </div>
+        <TagGroup id={product.id} />
+      </div >
     </div>
   );
 };

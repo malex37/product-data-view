@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
-import svgLoader from 'vite-svg-loader';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
+import svgr from 'vite-plugin-svgr'
 
 export default defineConfig({
   resolve: {
@@ -11,6 +11,8 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    svgLoader({ defaultImport: 'url', svgo: false })
+    svgr({
+      include: "**/*.svg"
+    }),
   ]
 });

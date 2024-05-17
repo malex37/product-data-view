@@ -27,7 +27,10 @@
         "./src/*"
       ]
     },
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "vite-plugin-svgr/client"
+    ]
   },
   "include": [
     "./src/**/*.ts",

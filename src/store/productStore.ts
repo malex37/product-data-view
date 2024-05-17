@@ -18,12 +18,12 @@ export const getProduct = createAsyncThunk('products/fetch', async () => {
 export const productStore = createSlice({
   name: 'products',
   initialState: {
-    products: [] as Product[],
+    items: {} as { [productId: string]: Product },
     sales: {} as { [productId: string]: Sale[] },
   },
   reducers: {
     addProduct: (state, action) => {
-      state.products.push(action.payload);
+      state.items[action.payload.id] = action.payload;
     },
     addSaleToProduct: (state, action) => {
       state.sales[action.payload.productId] = action.payload.data;
@@ -35,8 +35,8 @@ export const productStore = createSlice({
       const rawProd = action.payload[0];
       console.log(`Building state with ${JSON.stringify(rawProd)}`);
       return {
-        products: [
-          {
+        items: {
+          [rawProd.id]: {
             title: rawProd.title,
             subtitle: rawProd.subtitle,
             id: rawProd.id,
@@ -44,7 +44,7 @@ export const productStore = createSlice({
             imageURI: rawProd.image,
             tags: rawProd.tags.map((tag: string) => { return { text: tag } }),
           }
-        ],
+        },
         sales: {
           [rawProd.id]: rawProd.sales.map((sale: any) => {
             return {

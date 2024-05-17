@@ -1,9 +1,7 @@
-import { Tag } from "./Tag";
-
 /**
  * Definition for tag group component
- * possible extention to style, like colors
+ * possibly can be a base interface attribute
  */
 export type TagGroupProps = {
-  tags: Tag[];
+  id: string;
 }
