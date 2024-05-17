@@ -4,7 +4,7 @@ const ProductDetails = (
   { product }: { product: Product }
 ) => {
   return (
-    <div className="flex flex-col w-[20%]">
+    <div className="flex flex-col w-[20%] m-10">
       <div className="w-full flex flex-col gap-3">
         <div className="flex flex-col items-center ">
           <img src={product.imageURI} className="max-w-[75%]"/>

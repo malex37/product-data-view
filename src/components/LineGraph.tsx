@@ -50,12 +50,12 @@ export default function LineGraph(props: { productId: string, saleType: 'retail'
       {
         id: "Retail",
         data: retailData,
-        color: "rgb(153,164,190)",
+        color: "hsl(222, 22%, 68%)",
       },
       {
         id: "Wholesale",
         data: wholesaleData,
-        color: "rgb(70,168,246)"
+        color: "rgba(70,168,246, 1)"
       }
     ];
     console.log(`Graph object result ${JSON.stringify(res)}`);
@@ -67,11 +67,11 @@ export default function LineGraph(props: { productId: string, saleType: 'retail'
   const graphXsizeToWindow = window.innerWidth * 0.66; // 66%
   const graphInternalMarginValue = 100;
   return (
-    <div id="linegraph-container" className="h-ful w-full">
+    <div id="linegraph-container" className="h-ful w-full m-4 p-3">
       {
         productSales ?
           <>
-            <p>Retail sales</p>
+            <p className="text-3xl">Retail sales</p>
             <Line
               data={productSales}
               xScale={{
@@ -87,7 +87,7 @@ export default function LineGraph(props: { productId: string, saleType: 'retail'
               width={graphXsizeToWindow}
               height={graphYsizeToWindow}
               margin={{
-                top: 0,
+                top: 6,
                 right: graphInternalMarginValue - 10,
                 bottom: graphInternalMarginValue,
                 left: 20,
@@ -104,6 +104,9 @@ export default function LineGraph(props: { productId: string, saleType: 'retail'
                 legendPosition: 'start',
                 truncateTickAt: 0
               }}
+              axisLeft={null}
+              enableGridX={false}
+              enableGridY={false}
               animate={false}
               pointSize={2}
               pointColor={{ theme: 'background' }}
@@ -113,6 +116,7 @@ export default function LineGraph(props: { productId: string, saleType: 'retail'
               pointLabelYOffset={-12}
               enableTouchCrosshair={true}
               useMesh={true}
+              colors={['#9999cc', '#46a8f6']}
               legends={[
                 {
                   anchor: 'bottom-right',
