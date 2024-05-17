@@ -1,6 +1,7 @@
 import { Tag } from "./Tag";
 
 export interface Product {
+  id: string;
   imageURI: string;
   subtitle: string;
   title: string;
