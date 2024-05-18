@@ -63,11 +63,12 @@ export default function LineGraph(props: { productId: string, saleType: 'retail'
   };
   const productSalesSelector = createSelector([(state) => state.products.sales], processSales);
   const productSales = productSalesSelector(rootStore.getState());
+  // TODO: Listen to resize event to re-adjust these precentages
   const graphYsizeToWindow = window.innerHeight * 0.45; // 45%
   const graphXsizeToWindow = window.innerWidth * 0.66; // 66%
   const graphInternalMarginValue = 100;
   return (
-    <div id="linegraph-container" className="h-ful w-full m-4 p-3 floating-container">
+    <div id="linegraph-container" className="h-ful w-full p-3 floating-container">
       {
         productSales ?
           <>

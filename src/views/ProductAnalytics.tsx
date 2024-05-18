@@ -20,7 +20,7 @@ export default function ProductAnalytics() {
       {defaultProduct ?
         <div className="h-full w-full flex flex-nowrap">
           <ProductDetails product={defaultProduct as Product} />
-          <div>
+          <div className="m-10 flex flex-col gap-10">
             <LineGraph productId={(defaultProduct as Product).id} saleType="retail" />
             <SalesTable productId={(defaultProduct as Product).id} />
           </div>
