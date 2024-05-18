@@ -8,6 +8,8 @@ th {
   @apply p-3;
   @apply pt-8;
   @apply pb-8;
+  @apply after:pl-2;
+  @apply cursor-pointer;
 }
 
 td {
@@ -31,6 +33,15 @@ td {
     @apply shadow;
     @apply shadow-gray-500;
     @apply bg-white;
+  }
+}
+
+@layer utilities {
+  .indicate-asc {
+    @apply after:content-['\022C0'];
+  }
+  .indicate-desc {
+    @apply after:content-['\022C1'];
   }
 }
 
