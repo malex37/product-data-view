@@ -7,6 +7,7 @@
 
 import LineGraph from "@/components/LineGraph";
 import ProductDetails from "@/components/ProductDetails";
+import SalesTable from "@/components/SalesTable";
 import { Product } from "@/model/Product";
 import { useSelector } from "react-redux";
 
@@ -19,7 +20,10 @@ export default function ProductAnalytics() {
       {defaultProduct ?
         <div className="h-full w-full flex flex-nowrap">
           <ProductDetails product={defaultProduct as Product} />
-          <LineGraph productId={(defaultProduct as Product).id} saleType="retail" />
+          <div>
+            <LineGraph productId={(defaultProduct as Product).id} saleType="retail" />
+            <SalesTable productId={(defaultProduct as Product).id} />
+          </div>
         </div> :
         <>
           Loading

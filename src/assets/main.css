@@ -2,7 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+th {
+  @apply text-center;
+  @apply font-light;
+  @apply p-3;
+  @apply pt-8;
+  @apply pb-8;
+}
+
+td {
+  @apply font-light;
+}
+
+@layer components {
+  .dataFieldRight {
+    @apply text-center;
+  }
+  .dataField {
+    @apply border;
+    @apply border-l-white;
+    @apply border-r-white;
+    @apply border-t-gray-300;
+    @apply border-b-gray-300;
+    @apply p-2;
+  }
+
+  .floating-container {
+    @apply shadow;
+    @apply shadow-gray-500;
+    @apply bg-white;
+  }
+}
+
 body {
   height: 100vh;
   width: 100vw;
+  @apply bg-gray-100;
 }

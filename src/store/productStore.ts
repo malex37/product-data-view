@@ -34,6 +34,19 @@ export const productStore = createSlice({
     builder.addCase(getProduct.fulfilled, (state, action) => {
       const rawProd = action.payload[0];
       console.log(`Building state with ${JSON.stringify(rawProd)}`);
+      // sorting won't affect graph drawing, nivo takes data as a point
+      // and adds all values by x position regardles of order they're in the data array
+      const sortedSales = rawProd.sales.sort((current: Sale, toCompare: Sale) => {
+        const currentDate = new Date(current.weekEnding);
+        const toCompareDate = new Date(toCompare.weekEnding);
+        if (currentDate > toCompareDate) {
+          return 1;
+        } else if (toCompareDate > currentDate) {
+          return -1;
+        }
+        // they're equal
+        return 0;
+      });
       return {
         items: {
           [rawProd.id]: {
@@ -46,7 +59,7 @@ export const productStore = createSlice({
           }
         },
         sales: {
-          [rawProd.id]: rawProd.sales.map((sale: any) => {
+          [rawProd.id]: sortedSales.map((sale: any) => {
             return {
               ...sale,
             };

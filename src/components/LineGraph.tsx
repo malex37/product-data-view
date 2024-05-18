@@ -1,8 +1,7 @@
 import { Sale } from "@/model/SaleData";
 import rootStore from "@/store/rootStore";
-import { Line, ResponsiveLine } from "@nivo/line";
+import { Line } from "@nivo/line";
 import { createSelector } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
 
 const MonthNumToTag: { [id: number]: string } = {
   // Set to start on 1
@@ -25,7 +24,8 @@ export default function LineGraph(props: { productId: string, saleType: 'retail'
    * from graph tracking by week the datapoint will be { x: <week number of date>, y: <sum of points in week> }
    */
   console.log(`Attempting to create graph for product ${props.productId}`);
-  const procesSales = (paramSales: any) => {
+  // Transform a sales array to x,y elements
+  const processSales = (paramSales: any) => {
     if (!paramSales) {
       return [{
         id: "Retail sales",
@@ -61,13 +61,13 @@ export default function LineGraph(props: { productId: string, saleType: 'retail'
     console.log(`Graph object result ${JSON.stringify(res)}`);
     return res;
   };
-  const productSalesSelector = createSelector([(state) => state.products.sales], procesSales);
+  const productSalesSelector = createSelector([(state) => state.products.sales], processSales);
   const productSales = productSalesSelector(rootStore.getState());
   const graphYsizeToWindow = window.innerHeight * 0.45; // 45%
   const graphXsizeToWindow = window.innerWidth * 0.66; // 66%
   const graphInternalMarginValue = 100;
   return (
-    <div id="linegraph-container" className="h-ful w-full m-4 p-3">
+    <div id="linegraph-container" className="h-ful w-full m-4 p-3 floating-container">
       {
         productSales ?
           <>
